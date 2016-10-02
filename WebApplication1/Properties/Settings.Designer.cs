@@ -32,5 +32,15 @@ namespace WebApplication1.Properties {
                 return ((string)(this["WebApplication1_com_ebay_developer_eBayAPIInterfaceService"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://svcs.ebay.com/services/search/FindingService/v1")]
+        public string WebApplication1_com_ebay_developer_findingAPI_FindingService {
+            get {
+                return ((string)(this["WebApplication1_com_ebay_developer_findingAPI_FindingService"]));
+            }
+        }
     }
 }

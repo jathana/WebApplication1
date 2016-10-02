@@ -1,0 +1,54 @@
+﻿@model IEnumerable<WebApplication1.Models.eBayItemViewModel>
+
+@{
+    ViewBag.Title = "eBayItems";
+}
+
+<h2>eBayItems</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+       <th>
+          @Html.DisplayNameFor(model => model.GalleryURL)
+       </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>        
+        <th>
+            @Html.DisplayNameFor(model => model.PrimaryCategoryName)
+        </th>               
+        <th>
+            @Html.DisplayNameFor(model => model.PaymentMethod)
+        </th>
+        
+    </tr>
+
+@if (Model != null)
+{
+   foreach (var item in Model)
+   {
+    <tr>
+
+       <td>
+          <a href="@item.ViewItemURL">
+             <img src="@Url.Content(item.GalleryURL)" alt="Image" />
+          </a>
+       </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>        
+        <td>
+            @Html.DisplayFor(modelItem => item.PrimaryCategoryName)
+        </td>                
+        <td>
+            @Html.DisplayFor(modelItem => item.PaymentMethod)
+        </td>
+        
+    </tr>
+   }
+}
+
+</table>
