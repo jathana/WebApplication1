@@ -11,6 +11,7 @@ namespace WebApplication1.Models
       [Required]
       [Display(Name = "Search")]
       public string Query { get; set; }
+      public int PageNumber { get; set; }
    }
 
    public class eBayItemViewModel
@@ -23,6 +24,26 @@ namespace WebApplication1.Models
       public string ViewItemURL { get; set; }
       public string PaymentMethod { get; set; }
 
+   }
+
+   public class Pagination
+   {
+      public int TotalPages { get; set; }
+      public int ItemsPerPage { get; set; }
+   }
+
+   public class eBayFindResultsViewModel
+   {
+      public List<eBayItemViewModel> Items { get; set; }
+      public Pagination PaginationInfo { get; set; }
+      public int PageNumber { get; set; }
+      public string Query { get; set; }
+
+      public eBayFindResultsViewModel()
+      {
+         Items = new List<eBayItemViewModel>();
+         PaginationInfo = new Pagination();
+      }
    }
 
 

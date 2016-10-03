@@ -1,7 +1,7 @@
-﻿@model IEnumerable<WebApplication1.Models.eBayItemViewModel>
+﻿@model WebApplication1.Models.eBayFindResultsViewModel
 
 @{
-    ViewBag.Title = "eBayItems";
+    ViewBag.Title = "Items";
 }
 
 <h2>eBayItems</h2>
@@ -12,23 +12,23 @@
 <table class="table">
     <tr>
        <th>
-          @Html.DisplayNameFor(model => model.GalleryURL)
+          @Html.DisplayNameFor(model => model.Items[0].GalleryURL)
        </th>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            @Html.DisplayNameFor(model => model.Items[0].Title)
         </th>        
         <th>
-            @Html.DisplayNameFor(model => model.PrimaryCategoryName)
+            @Html.DisplayNameFor(model => model.Items[0].PrimaryCategoryName)
         </th>               
         <th>
-            @Html.DisplayNameFor(model => model.PaymentMethod)
+            @Html.DisplayNameFor(model => model.Items[0].PaymentMethod)
         </th>
         
     </tr>
 
 @if (Model != null)
 {
-   foreach (var item in Model)
+   foreach (var item in Model.Items)
    {
     <tr>
 
@@ -49,6 +49,20 @@
         
     </tr>
    }
+   
+
+
 }
 
+</table>
+<table class="table">
+   <tr>Page
+      @for (int i = 1; i < Math.Min(10,Model.PaginationInfo.TotalPages); i++)
+      {
+         using (Html.BeginForm())
+         {
+         <td>@Html.ActionLink(i.ToString(), "eBayFindByKeywordsAsync", "eBayFind", new { PageNumber = i, Query = Model.Query }, new { @class = "navbar-brand" })</td>
+         }
+      }
+   </tr>
 </table>
