@@ -56,12 +56,15 @@
 
 </table>
 <table class="table">
-   <tr>Page
-      @for (int i = 1; i < Math.Min(10,Model.PaginationInfo.TotalPages); i++)
+   <tr>
+      Page
+      @for (int i = 1; i < Math.Min(10, Model.PaginationInfo.TotalPages); i++)
       {
-         using (Html.BeginForm())
+         using (Html.BeginForm(null, null, FormMethod.Post, new { @class = "form-horizontal", name = "eBayFindByKeywords" }))
          {
-         <td>@Html.ActionLink(i.ToString(), "eBayFindByKeywordsAsync", "eBayFind", new { PageNumber = i, Query = Model.Query }, new { @class = "navbar-brand" })</td>
+            @Html.Hidden("PageNumber", i)
+            @Html.Hidden("Query", Model.Query)
+            <td>@Html.ActionLink(i.ToString(), "eBayFindByKeywords", "eBayFind", null, new { @class = "navbar-brand" })</td>
          }
       }
    </tr>
